@@ -57,7 +57,7 @@ bt_f1()
 }
 
 int
-main(int argc, char **argv)
+main()
 {
 	bt_f1();
 
