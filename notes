@@ -1,0 +1,5 @@
+# -MG missing header files, are generated files
+# -MM ignore system headers
+# -MF target depedency file
+#
+gcc -MG -MM -MF bt.d bt.c
