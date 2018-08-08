@@ -9,7 +9,7 @@ struct bt_frame_info_s {
 	char segName[256];
 	char symbolName[128*3];
 
-	void *pPgmStart;
+	void *pSegStart;
 };
 #define BT_MAX_FRAMES 256
 
