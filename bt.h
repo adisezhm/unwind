@@ -6,7 +6,10 @@
 struct bt_frame_info_s {
 	unw_word_t ip;
 	unw_word_t offset;
+	char segName[256];
 	char symbolName[128*3];
+
+	void *pPgmStart;
 };
 #define BT_MAX_FRAMES 256
 

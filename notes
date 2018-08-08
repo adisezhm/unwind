@@ -1,5 +1,38 @@
-# -MG missing header files, are generated files
-# -MM ignore system headers
-# -MF target depedency file
-#
-gcc -MG -MM -MF bt.d bt.c
+1.  Compile
+    gcc -g bt.c -Wint-conversion -o bt -l unwind && bt
+
+2.  Dependency generation
+
+    # -MG missing header files, are generated files
+    # -MM ignore system headers
+    # -MF target depedency file
+    #
+    gcc -MG -MM -MF bt.d bt.c
+
+3. 32 bit memory layout
+
+   .text starts at 0x08048000
+
+   Randomize VA space : /proc/sys/kernel/randomize_va_space
+      0 = no randomization
+
+4. 64 bit sample maps
+
+7fd1fba00000-7fd1fbbe7000 r-xp 00000000 00:00 430357             /lib/x86_64-linux-gnu/libc-2.27.so
+7fd1fbbe7000-7fd1fbbf0000 ---p 001e7000 00:00 430357             /lib/x86_64-linux-gnu/libc-2.27.so
+7fd1fbbf0000-7fd1fbde7000 ---p 000001f0 00:00 430357             /lib/x86_64-linux-gnu/libc-2.27.so
+7fd1fbde7000-7fd1fbdeb000 r--p 001e7000 00:00 430357             /lib/x86_64-linux-gnu/libc-2.27.so
+7fd1fbdeb000-7fd1fbded000 rw-p 001eb000 00:00 430357             /lib/x86_64-linux-gnu/libc-2.27.so
+7fd1fbded000-7fd1fbdf1000 rw-p 00000000 00:00 0
+7fd1fbe00000-7fd1fbe26000 r-xp 00000000 00:00 430236             /lib/x86_64-linux-gnu/ld-2.27.so
+7fd1fbe26000-7fd1fbe27000 r-xp 00026000 00:00 430236             /lib/x86_64-linux-gnu/ld-2.27.so
+7fd1fc027000-7fd1fc028000 r--p 00027000 00:00 430236             /lib/x86_64-linux-gnu/ld-2.27.so
+7fd1fc028000-7fd1fc029000 rw-p 00028000 00:00 430236             /lib/x86_64-linux-gnu/ld-2.27.so
+7fd1fc029000-7fd1fc02a000 rw-p 00000000 00:00 0
+7fd1fc050000-7fd1fc052000 rw-p 00000000 00:00 0
+7fd1fc200000-7fd1fc201000 r-xp 00000000 00:00 149113             /home/adi/g/unwind/sample
+7fd1fc400000-7fd1fc401000 r--p 00000000 00:00 149113             /home/adi/g/unwind/sample
+7fd1fc401000-7fd1fc402000 rw-p 00001000 00:00 149113             /home/adi/g/unwind/sample
+7fffe5ed2000-7fffe5ef3000 rw-p 00000000 00:00 0                  [heap]
+7fffed098000-7fffed898000 rw-p 00000000 00:00 0                  [stack]
+7fffedd2f000-7fffedd30000 r-xp 00000000 00:00 0                  [vdso]
